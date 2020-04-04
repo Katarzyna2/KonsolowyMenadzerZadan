@@ -1,0 +1,11 @@
+D:\CodersLab_nauka\C#\Warsztawy\KonsolowyMenadżerZadan\KonsolowyMenadżerZadan\bin\Debug\netcoreapp3.1\KonsolowyMenadżerZadan.exe
+D:\CodersLab_nauka\C#\Warsztawy\KonsolowyMenadżerZadan\KonsolowyMenadżerZadan\bin\Debug\netcoreapp3.1\KonsolowyMenadżerZadan.deps.json
+D:\CodersLab_nauka\C#\Warsztawy\KonsolowyMenadżerZadan\KonsolowyMenadżerZadan\bin\Debug\netcoreapp3.1\KonsolowyMenadżerZadan.runtimeconfig.json
+D:\CodersLab_nauka\C#\Warsztawy\KonsolowyMenadżerZadan\KonsolowyMenadżerZadan\bin\Debug\netcoreapp3.1\KonsolowyMenadżerZadan.runtimeconfig.dev.json
+D:\CodersLab_nauka\C#\Warsztawy\KonsolowyMenadżerZadan\KonsolowyMenadżerZadan\bin\Debug\netcoreapp3.1\KonsolowyMenadżerZadan.dll
+D:\CodersLab_nauka\C#\Warsztawy\KonsolowyMenadżerZadan\KonsolowyMenadżerZadan\bin\Debug\netcoreapp3.1\KonsolowyMenadżerZadan.pdb
+D:\CodersLab_nauka\C#\Warsztawy\KonsolowyMenadżerZadan\KonsolowyMenadżerZadan\obj\Debug\netcoreapp3.1\KonsolowyMenadżerZadan.csprojAssemblyReference.cache
+D:\CodersLab_nauka\C#\Warsztawy\KonsolowyMenadżerZadan\KonsolowyMenadżerZadan\obj\Debug\netcoreapp3.1\KonsolowyMenadżerZadan.AssemblyInfoInputs.cache
+D:\CodersLab_nauka\C#\Warsztawy\KonsolowyMenadżerZadan\KonsolowyMenadżerZadan\obj\Debug\netcoreapp3.1\KonsolowyMenadżerZadan.AssemblyInfo.cs
+D:\CodersLab_nauka\C#\Warsztawy\KonsolowyMenadżerZadan\KonsolowyMenadżerZadan\obj\Debug\netcoreapp3.1\KonsolowyMenadżerZadan.dll
+D:\CodersLab_nauka\C#\Warsztawy\KonsolowyMenadżerZadan\KonsolowyMenadżerZadan\obj\Debug\netcoreapp3.1\KonsolowyMenadżerZadan.pdb
