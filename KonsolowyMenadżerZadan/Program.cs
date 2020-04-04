@@ -5,6 +5,12 @@ namespace KonsolowyMenadżerZadan
 {
     class Program
     {
+     //   struct TaskModel
+      //{      string Opis;
+      //      DateTime : 
+      //      bool ZadanieCałodniowe;
+      //      bool ZadanieWażne;
+      //  }
         public class Aplikacja
         {
             public Aplikacja(string zadanie, string datazadania)
@@ -53,8 +59,28 @@ namespace KonsolowyMenadżerZadan
                     }
                 }
             }
-            while (command == "exit");
-            
+            while (command != "exit");
+            Console.WriteLine("Program Zamknięty");
+
         }
     }
 }
+
+/*public static class ConsoleEx
+    {
+        public static List<ConsoleHistory> OutputMessages = new List<ConsoleHistory>();
+        public static void WriteLine(string message, ConsoleColor consoleColor = ConsoleColor.Green) // green jest domyślnym kolorem, trzeba definiować
+        {
+            DateTime date = DateTime.Now;
+            OutputMessages.Add(new ConsoleHistory()
+            {
+                Date = date,
+                Messsage = message
+            });
+
+            ConsoleColor temp = Console.ForegroundColor;
+            Console.ForegroundColor = consoleColor; // zwraca kolor napisów w konsoli
+            Console.WriteLine($"{date.ToString("yyyy-MM-dd HH-mm-ss")} {message}");
+        }
+    }
+*/
