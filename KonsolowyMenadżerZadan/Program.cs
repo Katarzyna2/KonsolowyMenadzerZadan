@@ -5,26 +5,35 @@ namespace KonsolowyMenadżerZadan
 {
     class Program
     {
-     //   struct TaskModel
-      //{      string Opis;
-      //      DateTime : 
-      //      bool ZadanieCałodniowe;
-      //      bool ZadanieWażne;
-      //  }
-        public class Aplikacja
-        {
-            public Aplikacja(string zadanie, string datazadania)
-            {
-                Zadanie = zadanie;
-                DataZadania = datazadania;
-            }
+        //public static object Resources { get; private set; }
+    
 
-            public string Zadanie { get; set; }
-            public string DataZadania { get; set; }
+        public class TaskModel
+        {
+            public TaskModel(string opis, string datarozpoczecia, string datazakonczenia, bool zadanieCałodniowe, bool zadanieWażne)
+            {
+                Opis = opis;
+                DataRozpoczęcia = datarozpoczecia;
+                DataZakonczenia = datazakonczenia;
+                ZadanieCałodniowe = zadanieCałodniowe;
+                ZadanieWażne = zadanieWażne;
+            }
+            
+            public string Opis { get; set; }
+            public string DataRozpoczęcia { get; set; }
+            public string DataZakonczenia { get; set; }
+            public bool ZadanieCałodniowe { get; set; }
+            public bool ZadanieWażne { get; set; }
         }
+
+       //public static string ToYesNoString(this bool value)
+       //     {
+       //         return value ? Resources.Yes : Resources.No;
+       //     }
+       
         static void Main(string[] args)
         {
-            List<Aplikacja> zadania = new List<Aplikacja>();
+            List<TaskModel> zadania = new List<TaskModel>();
             string command = "";
 
             do
@@ -36,17 +45,29 @@ namespace KonsolowyMenadżerZadan
                 if (command.ToUpper().Trim() == "ADD")
                 {
                     Console.Write("Dodaj zadanie: ");
-                    string zadanie = Console.ReadLine();
+                    string Opis = Console.ReadLine();
                     Console.WriteLine();
 
-                    Console.Write("Podaj datę zadania: ");
-                    string DataZadania = Console.ReadLine();
+                    //Console.WriteLine("Czy zadanie jest całodniowe: ");
+                    //bool ZadanieCałodniowe = Console.ReadKey(YesNo);
+                    //Console.WriteLine();
+
+                    //Console.WriteLine("Czy zadanie jest ważne: ");
+                    //bool ZadanieWażne = Console.ReadLine();
+                    //Console.WriteLine();
+
+                    Console.Write("Podaj datę rozpoczęcia: ");
+                    string DataRozpoczecia = Console.ReadLine();
                     Console.WriteLine();
 
-                    bool parseResult = DateTime.TryParse(DataZadania, out var d);
+                    Console.Write("Podaj datę zakończenia: ");
+                    string DataZakonczenia = Console.ReadLine();
+                    Console.WriteLine();
+
+                    bool parseResult = DateTime.TryParse(DataZakonczenia, out var d);
                     if (parseResult)
                     {
-                     Console.WriteLine("Dodawanie zakończone sukcesem.");
+                        Console.WriteLine("Dodawanie zakończone sukcesem.");
                     }
                     else
                     {
@@ -62,6 +83,11 @@ namespace KonsolowyMenadżerZadan
             while (command != "exit");
             Console.WriteLine("Program Zamknięty");
 
+        }
+
+        private static ConsoleKeyInfo GetZadanieCałodniowe()
+        {
+            return Console.ReadKey();
         }
     }
 }
