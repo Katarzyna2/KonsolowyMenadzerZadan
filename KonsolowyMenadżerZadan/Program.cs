@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace KonsolowyMenadżerZadan
 {
-    class Program
+    public class Program
     {
         //public static object Resources { get; private set; }
      
@@ -13,7 +13,7 @@ namespace KonsolowyMenadżerZadan
        //         return value ? Resources.Yes : Resources.No;
        //     }
        
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             List<TaskModel> taskModels = new List<TaskModel>();
             string command = "";
@@ -47,6 +47,7 @@ namespace KonsolowyMenadżerZadan
                     Console.WriteLine();
 
                     TaskModel taskModel = new TaskModel(opis, datarozpoczecia, datazakonczenia);
+                    taskModels.Add(taskModel);
 
                     if (datarozpoczecia == "")
                     {
@@ -62,6 +63,7 @@ namespace KonsolowyMenadżerZadan
 
                     if (parseResult)
                     {
+                        
                         Console.WriteLine("Dodawanie zakończone sukcesem.");
                     }
                     else
@@ -70,7 +72,7 @@ namespace KonsolowyMenadżerZadan
                     }
                 }
 
-                    if (command == "SHOWALL")
+                    if (command.ToUpper().Trim() == "SHOWALL")
                     {
                         int padding = 20;
                         Console.WriteLine($"{"Opis".PadLeft(padding)}|{"Data rozpoczęcia".PadLeft(padding)}|{"Data zakończenia".PadLeft(padding)}");
@@ -89,37 +91,29 @@ namespace KonsolowyMenadżerZadan
                     }
                 
             }
-            while (command != "EXIT");
+            while (command.ToUpper().Trim() != "EXIT");
             Console.WriteLine("Program Zamknięty");
-
+     
         }
 
     }
     public class TaskModel
     {
-        private string datarozpoczecia;
-
         public string Opis { get; set; }
         public string DataRozpoczęcia { get; set; }
         public string DataZakonczenia { get; set; }
         public bool ZadanieCałodniowe { get; set; }
         public bool ZadanieWażne { get; set; }
-        public TaskModel(string opis, string datarozpoczecia, string datazakonczenia, bool zadanieCałodniowe, bool zadanieWażne)
+        public TaskModel(string opis, string datarozpoczecia, string datazakonczenia)
         {
             Opis = opis;
             DataRozpoczęcia = datarozpoczecia;
             DataZakonczenia = datazakonczenia;
-            ZadanieCałodniowe = zadanieCałodniowe;
-            ZadanieWażne = zadanieWażne;
+          //  ZadanieCałodniowe = zadanieCałodniowe;
+            //ZadanieWażne = zadanieWażne;
         }
 
-        public TaskModel(string opis, string datarozpoczecia, string datazakonczenia)
-        {
-            Opis = opis;
-            this.datarozpoczecia = datarozpoczecia;
-            DataZakonczenia = datazakonczenia;
-        }
-
+       
         public void ShowInfo()
         {
             Console.WriteLine($"{Opis}: Opis: {DataRozpoczęcia}: Data Rozpoczęcia: {DataZakonczenia}: Data Zakończenia:");
