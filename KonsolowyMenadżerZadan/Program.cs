@@ -6,25 +6,7 @@ namespace KonsolowyMenadżerZadan
     class Program
     {
         //public static object Resources { get; private set; }
-    
-
-        public class TaskModel
-        {
-            public TaskModel(string opis, string datarozpoczecia, string datazakonczenia, bool zadanieCałodniowe, bool zadanieWażne)
-            {
-                Opis = opis;
-                DataRozpoczęcia = datarozpoczecia;
-                DataZakonczenia = datazakonczenia;
-                ZadanieCałodniowe = zadanieCałodniowe;
-                ZadanieWażne = zadanieWażne;
-            }
-            
-            public string Opis { get; set; }
-            public string DataRozpoczęcia { get; set; }
-            public string DataZakonczenia { get; set; }
-            public bool ZadanieCałodniowe { get; set; }
-            public bool ZadanieWażne { get; set; }
-        }
+     
 
        //public static string ToYesNoString(this bool value)
        //     {
@@ -33,7 +15,7 @@ namespace KonsolowyMenadżerZadan
        
         static void Main(string[] args)
         {
-            List<TaskModel> zadania = new List<TaskModel>();
+            List<TaskModel> taskModels = new List<TaskModel>();
             string command = "";
 
             do
@@ -45,7 +27,7 @@ namespace KonsolowyMenadżerZadan
                 if (command.ToUpper().Trim() == "ADD")
                 {
                     Console.Write("Dodaj zadanie: ");
-                    string Opis = Console.ReadLine();
+                    string opis = Console.ReadLine();
                     Console.WriteLine();
 
                     //Console.WriteLine("Czy zadanie jest całodniowe: ");
@@ -57,14 +39,27 @@ namespace KonsolowyMenadżerZadan
                     //Console.WriteLine();
 
                     Console.Write("Podaj datę rozpoczęcia: ");
-                    string DataRozpoczecia = Console.ReadLine();
+                    string datarozpoczecia = Console.ReadLine();
                     Console.WriteLine();
 
                     Console.Write("Podaj datę zakończenia: ");
-                    string DataZakonczenia = Console.ReadLine();
+                    string datazakonczenia = Console.ReadLine();
                     Console.WriteLine();
 
-                    bool parseResult = DateTime.TryParse(DataZakonczenia, out var d);
+                    TaskModel taskModel = new TaskModel(opis, datarozpoczecia, datazakonczenia);
+
+                    if (datarozpoczecia == "")
+                    {
+                        taskModel.DataRozpoczęcia = DateTime.Now.ToString("yyyy-MM-dd");
+                    }
+                    bool parseResult = DateTime.TryParse(datarozpoczecia, out var d);
+                    if (datazakonczenia == "")
+                    {
+                        taskModel.DataZakonczenia = DateTime.Now.ToString("yyyy-MM-dd");
+                    }
+
+                    _ = DateTime.TryParse(datazakonczenia, out var e);
+
                     if (parseResult)
                     {
                         Console.WriteLine("Dodawanie zakończone sukcesem.");
@@ -73,22 +68,63 @@ namespace KonsolowyMenadżerZadan
                     {
                         Console.WriteLine("Porażka");
                     }
-
-                    if (command.ToUpper().Trim() == "ShowAll")
-                    {
-                        Console.WriteLine($"{"Zadanie".PadLeft(10)}||{"Data dodania".PadLeft(10)}");
-                    }
                 }
+
+                    if (command == "SHOWALL")
+                    {
+                        int padding = 20;
+                        Console.WriteLine($"{"Opis".PadLeft(padding)}|{"Data rozpoczęcia".PadLeft(padding)}|{"Data zakończenia".PadLeft(padding)}");
+                        foreach (var item in taskModels)
+                        {
+                            string a = "";
+                            if(item.Opis != null)
+                            {
+                                a = item.Opis.PadLeft(padding);
+                            }
+                            string b = item.Opis?.PadLeft(padding) ?? "Brak";
+                            string c = item.Opis != null ? item.Opis.PadLeft(padding) : "Brak";
+                            Console.WriteLine($"{item.Opis.PadLeft(padding)}|{item.DataRozpoczęcia.PadLeft(padding)}|{item.DataZakonczenia.PadLeft(padding)}");
+
+                        }
+                    }
+                
             }
-            while (command != "exit");
+            while (command != "EXIT");
             Console.WriteLine("Program Zamknięty");
 
         }
 
-        private static ConsoleKeyInfo GetZadanieCałodniowe()
+    }
+    public class TaskModel
+    {
+        private string datarozpoczecia;
+
+        public string Opis { get; set; }
+        public string DataRozpoczęcia { get; set; }
+        public string DataZakonczenia { get; set; }
+        public bool ZadanieCałodniowe { get; set; }
+        public bool ZadanieWażne { get; set; }
+        public TaskModel(string opis, string datarozpoczecia, string datazakonczenia, bool zadanieCałodniowe, bool zadanieWażne)
         {
-            return Console.ReadKey();
+            Opis = opis;
+            DataRozpoczęcia = datarozpoczecia;
+            DataZakonczenia = datazakonczenia;
+            ZadanieCałodniowe = zadanieCałodniowe;
+            ZadanieWażne = zadanieWażne;
         }
+
+        public TaskModel(string opis, string datarozpoczecia, string datazakonczenia)
+        {
+            Opis = opis;
+            this.datarozpoczecia = datarozpoczecia;
+            DataZakonczenia = datazakonczenia;
+        }
+
+        public void ShowInfo()
+        {
+            Console.WriteLine($"{Opis}: Opis: {DataRozpoczęcia}: Data Rozpoczęcia: {DataZakonczenia}: Data Zakończenia:");
+        }
+
     }
 }
 
